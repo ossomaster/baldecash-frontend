@@ -14,3 +14,7 @@
 | :-------------- | :----------------------------------- |
 | `npm run dev`   | Inicializa el servidor de desarrollo |
 | `npm run build` | Genera los archivos estáticos        |
+
+## Consideraciones
+
+-   La contraseña por defecto para las cuentas aleatorias es: `password`
