@@ -13,15 +13,14 @@ const UserInfo = () => {
 		setIsLoading(true)
 		try {
 			await logout()
-			setUser(null)
-            
-			window.localStorage.removeItem("token")
-			window.localStorage.removeItem("user")
-
-			navigate("/auth/login")
 		} catch (error) {
 			setIsLoading(false)
 			console.error(error)
+		} finally {
+			window.localStorage.removeItem("token")
+			window.localStorage.removeItem("user")
+			setUser(null)
+			navigate("/auth/login")
 		}
 	}
 
