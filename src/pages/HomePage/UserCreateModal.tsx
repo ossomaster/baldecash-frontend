@@ -17,8 +17,13 @@ type FormValues = UserFormData
 
 const UserCreateModal = ({ show, onClose, onSave }: UserCreateModalProps) => {
 	const [isLoading, setIsLoading] = useState(false)
-	const { handleSubmit, control } = useForm<FormValues>({
+	const { handleSubmit, control, reset } = useForm<FormValues>({
 		defaultValues: {
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
 			role: ROLES[0],
 		},
 	})
@@ -29,6 +34,7 @@ const UserCreateModal = ({ show, onClose, onSave }: UserCreateModalProps) => {
 		try {
 			const response = await store(data)
 			onSave(response.data.user)
+            reset()
 			message.success("Registro creado correctamente")
 		} catch (error) {
 			console.error(error)
